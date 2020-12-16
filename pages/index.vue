@@ -390,6 +390,7 @@ export default {
 }   
 .line1{
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
 }
 .btn0{
     font-size: 30px;
