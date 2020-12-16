@@ -1,23 +1,30 @@
 <template>
   <div>
-    <div class="board">
-        <div class="control"><button class="btn0" @click="decrement"><</button></div>
-            <div v-for="projeto in projetos_filtrados" :key="projeto.id">
-                
-                <div class="card">
-                    <p class="text0">{{projeto.nome}}</p>
-                    <img :src="projeto.urlimage" width="200px" height="200px">
-                    <p class="text1">{{projeto.tecnologia}}</p>
-                    <p class="text2">{{projeto.description}}</p>
-                    <div class="buttons">
-                        <button class="btn1" v-show="count!==1"><a :href="projeto.urlproject" target="_blank" class="btn-link">Code</a></button>
-                        <button class="btn2" v-show="count!==1">Demo</button>
+    <div class="line1">
+        <div class="board1">
+            <div class="control"><button class="btn0" @click="decrement"><</button></div>
+                <div v-for="projeto in projetos_filtrados" :key="projeto.id">
+                    
+                    <div class="card">
+                        <p class="text0">{{projeto.nome}}</p>
+                        <img :src="projeto.urlimage" width="200px" height="200px">
+                        <p class="text1">{{projeto.tecnologia}}</p>
+                        <p class="text2">{{projeto.description}}</p>
+                        <div class="buttons">
+                            <button class="btn1" v-show="count!==1"><a :href="projeto.urlproject" target="_blank" class="btn-link">Code</a></button>
+                            <button class="btn2" v-show="count!==1">Demo</button>
+                        </div>
                     </div>
-                </div>
-                
+                    
 
+                </div>
+            <div class="control"><button class="btn0" @click="increment">></button></div>
+        </div>
+        <div class="board2">
+            <div v-for="tecnologia in tecnologias" :key="tecnologia.id">
+                <p class="text3">{{tecnologia.nome}}</p>
             </div>
-        <div class="control"><button class="btn0" @click="increment">></button></div>
+        </div>
     </div>
   </div>
 </template>
@@ -179,12 +186,134 @@ export default {
                 },
                 {
                 "id": 10,
-                "urlimage":"https://katch-up.com/wp-content/uploads/2018/07/8d02ff048b.png",
+                "urlimage":"https://image.flaticon.com/icons/png/512/179/179546.png",
                 "nome":"Portfólio",
                 "description":"Criação de portfólio com slides.",
                 "tecnologia":"VueJS + NuxtJS",
                 "gif":"",
                 "urlproject":"https://github.com/lucasbguima/Portfolio"
+                },
+            ],
+            tecnologias: [
+                {
+                "id": 1,
+                "nome":"C",
+                },
+                {
+                "id": 2,
+                "nome":"C++",
+                },
+                {
+                "id": 3,
+                "nome":"PHP",
+                },
+                {
+                "id": 4,
+                "nome":"POO",
+                },
+                {
+                "id": 5,
+                "nome":"Javascript",
+                },
+                {
+                "id": 6,
+                "nome":"Python",
+                },
+                {
+                "id": 7,
+                "nome":"HTML",
+                },
+                {
+                "id": 8,
+                "nome":"CSS",
+                },
+                {
+                "id": 9,
+                "nome":"Laravel",
+                },
+                {
+                "id": 10,
+                "nome":"Django",
+                },
+                {
+                "id": 11,
+                "nome":"NodeJS",
+                },
+                {
+                "id": 12,
+                "nome":"VueJS",
+                },
+                {
+                "id": 13,
+                "nome":"AWS",
+                },
+                {
+                "id": 14,
+                "nome":"Heroku",
+                },
+                {
+                "id": 15,
+                "nome":"Git",
+                },
+                {
+                "id": 16,
+                "nome":"GitHub",
+                },
+                {
+                "id": 17,
+                "nome":"Docker",
+                },
+                {
+                "id": 18,
+                "nome":"MySQL",
+                },
+                {
+                "id": 19,
+                "nome":"SQLite",
+                },
+                {
+                "id": 20,
+                "nome":"PostGreSQL",
+                },
+                {
+                "id": 21,
+                "nome":"MongoDB",
+                },
+                {
+                "id": 22,
+                "nome":"Vercel",
+                },
+                {
+                "id": 23,
+                "nome":"API",
+                },
+                {
+                "id": 24,
+                "nome":"Insomnia",
+                },
+                {
+                "id": 25,
+                "nome":"Postman",
+                },
+                {
+                "id": 26,
+                "nome":"Photoshop",
+                },
+                {
+                "id": 27,
+                "nome":"Illustrator",
+                },
+                {
+                "id": 28,
+                "nome":"Figma",
+                },
+                {
+                "id": 29,
+                "nome":"Whinsical",
+                },
+                {
+                "id": 30,
+                "nome":"NuxtJS",
                 },
             ],
             count: 1,
@@ -242,13 +371,25 @@ export default {
     border-radius: 20px;
 }
 
-.board{
-    background-color: rgb(57, 165, 253);
+.board1{
+    background-color: rgb(151, 24, 255);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
     height: 685px;
+}
+.board2{
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: stretch;
+    align-items: center;
+    gap: 10px;
+}   
+.line1{
+    display: grid;
 }
 .btn0{
     font-size: 30px;
@@ -302,12 +443,30 @@ export default {
     padding-bottom: 10px;
 }
 
+.text3{
+    color: white;
+    text-align: center;
+    font-family: arial;
+}
+
 .btn0,.btn1,.btn2:hover{
     cursor: pointer;
 }
+.text3:hover{
+   cursor:default;
+}
+
 .buttons{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
+
+@media screen and (min-width: 600px) {
+    .line1{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 </style>
