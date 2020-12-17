@@ -19,7 +19,7 @@
             <div class="control"><button class="btn0" @click="increment">></button></div>
         </div>
 
-        <button class="btn3" @click="show">≡</button>
+        <button class="btn3" @click="show" v-if="count2==0">≡</button>
 
         <div class="board2" v-if="count2==1">
             <div v-for="tecnologia in tecnologias" :key="tecnologia.id">
@@ -379,14 +379,14 @@ export default {
 }
 .card{
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    box-shadow: 0 9px 9px rgba(0,0,0,0.36);
     width: 200px;
     padding: 50px;
     border-radius: 20px;
 }
 
 .board1{
-    background-color: rgb(151, 24, 255);
+    background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -394,6 +394,9 @@ export default {
     height: 685px;
 }
 .board2{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: 40px;
     padding: 20px;
     background-color: rgb(0, 0, 0);
     display: grid;
@@ -401,7 +404,7 @@ export default {
     justify-items: stretch;
     align-items: center;
     gap: 20px;
-    animation: aparecer 1s forwards;
+    animation: aparecer 1s ease forwards;
 }   
 
 @keyframes aparecer{
@@ -412,7 +415,9 @@ export default {
         transform: translateY(-120px);
         margin-bottom: -120px;
     }
+   
 }
+
 .line1{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
@@ -447,6 +452,10 @@ export default {
     border-radius: 5px;
 }
 .btn3{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
     font-size: 30px;
     font-weight: bold;
     color:white;
