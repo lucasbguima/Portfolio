@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="line1">
+
         <div class="board1">
             <div class="control"><button class="btn0" @click="decrement"><</button></div>
                 <div v-for="projeto in projetos_filtrados" :key="projeto.id">
-                    
                     <div class="card">
                         <p class="text0">{{projeto.nome}}</p>
                         <img :src="projeto.urlimage" width="200px" height="200px">
@@ -15,16 +15,19 @@
                             <button class="btn2" v-show="count!==1">Demo</button>
                         </div>
                     </div>
-                    
-
                 </div>
             <div class="control"><button class="btn0" @click="increment">></button></div>
         </div>
-        <div class="board2">
+
+        <button class="btn3" @click="show">≡</button>
+
+        <div class="board2" v-if="count2==1">
             <div v-for="tecnologia in tecnologias" :key="tecnologia.id">
                 <p class="text3">{{tecnologia.nome}}</p>
             </div>
+            <button class="btn4" @click="show">≡</button>
         </div>
+       
     </div>
   </div>
 </template>
@@ -317,6 +320,7 @@ export default {
                 },
             ],
             count: 1,
+            count2: 0,
         }
     },
     computed: {
@@ -344,6 +348,15 @@ export default {
             }
                 
             console.log(this.count)
+        },
+        show(){
+            if (this.count2 > 0){
+                this.count2 -= 1;
+            }
+            else {
+                this.count2 = 1;
+            }
+            console.log(this.count2)
         }
     }
 }
@@ -351,6 +364,7 @@ export default {
 </script>
 
 <style>
+
 *{
     padding: 0;
     margin: 0;
@@ -380,18 +394,30 @@ export default {
     height: 685px;
 }
 .board2{
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(0, 0, 0);
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     justify-items: stretch;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    animation: aparecer 1s forwards;
 }   
+
+@keyframes aparecer{
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-120px);
+        margin-bottom: -120px;
+    }
+}
 .line1{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
 }
+
 .btn0{
     font-size: 30px;
     font-weight: bold;
@@ -420,6 +446,22 @@ export default {
     padding: 10px;
     border-radius: 5px;
 }
+.btn3{
+    font-size: 30px;
+    font-weight: bold;
+    color:white;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    padding: 10px;
+}
+.btn4{
+    font-size: 30px;
+    font-weight: bold;
+    color:white;
+    background-color: rgb(20, 20, 20);
+    border: none;
+}
+
 .text0{
     text-align: center;
     font-family: arial;
@@ -450,9 +492,10 @@ export default {
     font-family: arial;
 }
 
-.btn0,.btn1,.btn2:hover{
+.btn0,.btn1,.btn2,.btn3,.btn4:hover{
     cursor: pointer;
 }
+
 .text3:hover{
    cursor:default;
 }
@@ -461,13 +504,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-}
-
-@media screen and (min-width: 600px) {
-    .line1{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 </style>
