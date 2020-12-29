@@ -1,7 +1,7 @@
 # Portfólio
 <p><b>NuxtJS + UX/UI Design + Behance </b><br/></p>
 
-<p>Link para visitar meu Portfólio de Programação em NuxtJS:</p>
+<p>Link para visitar meu Portfólio de Programação (Geral):</p>
 
 <a href="https://lucasbguima.vercel.app" target="_blank">lucasbguima.vercel.app</a>
 
